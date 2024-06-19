@@ -1,0 +1,51 @@
+version: "3"
+
+name: transactions
+
+services:
+  web:
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    container_name: transactions
+    volumes:
+      - ./:/var/www/
+    tty: true
+    ports:
+      - 9501:9501
+    depends_on:
+      - valkey
+    restart: always
+
+  valkey:
+    container_name: valkey-queue
+    image: valkey/valkey:bookworm
+    ports:
+      - 6379:6379
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin-transactions
+    ports:
+      - 9411:9411
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: prometheus-transactions
+    # command: [ "--config.file=/prometheus-config/prometheus.yml" ]
+    # volumes:
+    #   - ./prometheus-config:/prometheus-config
+    #   - ./../prometheus:/prometheus
+    ports: 
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana:10.4.4
+    container_name: grafana-transactions
+    restart: unless-stopped
+    environment:
+      - TERM=linux
+    ports:
+      - 3000:3000
+    volumes:
+      - ./../grafana_storage:/var/lib/grafana

@@ -7,6 +7,7 @@ namespace App\Domain\User\Document\Factory;
 use App\Domain\User\Document\CNPJ;
 use App\Domain\User\Document\CPF;
 use App\Domain\User\Document\Document;
+use App\Domain\User\Document\Exception\DocumentException;
 use InvalidArgumentException;
 
 /**
@@ -32,7 +33,7 @@ class DocumentFactory
             case 'cnpj':
                 return new CNPJ($value);
             default:
-                throw new InvalidArgumentException('Invalid document type');
+                throw new DocumentException('Invalid document type.');
         }
     }
 }

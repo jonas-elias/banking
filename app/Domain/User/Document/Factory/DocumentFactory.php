@@ -21,7 +21,7 @@ class DocumentFactory
      * @param string $type
      * @param string $value
      *
-     * @throws InvalidArgumentException
+     * @throws DocumentException
      *
      * @return Document
      */

@@ -12,5 +12,5 @@ assignees: ""
 **Current Behavior:**
 <!-- Describe how the bug manifests. -->
 
-**Expected Behavior::**
+**Expected Behavior:**
 <!-- Describe what the behavior would be without the bug. -->

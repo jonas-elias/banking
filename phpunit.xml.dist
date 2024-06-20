@@ -13,4 +13,12 @@
       <directory suffix=".php">./app</directory>
     </include>
   </source>
+  <coverage includeUncoveredFiles="true" pathCoverage="false"
+    ignoreDeprecatedCodeUnits="true"
+        disableCodeCoverageIgnore="true">
+      <report>
+          <html outputDirectory="test/html-coverage" lowUpperBound="50" highLowerBound="90" />
+          <text outputFile="test/coverage.txt" showUncoveredFiles="false" showOnlySummary="true" />
+      </report>
+  </coverage>
 </phpunit>

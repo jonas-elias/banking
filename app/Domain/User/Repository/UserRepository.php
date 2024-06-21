@@ -28,7 +28,8 @@ class UserRepository
         protected User $user,
         protected Common $common,
         protected Merchant $merchant,
-    ) {}
+    ) {
+    }
 
     /**
      * Call database model of the type user (common or merchant).
@@ -40,24 +41,24 @@ class UserRepository
     public function create(UserDTO $userDTO): array
     {
         $model = match ($userDTO->type) {
-            UserType::Common->value => $this->common,
+            UserType::Common->value   => $this->common,
             UserType::Merchant->value => $this->merchant,
         };
 
         $ulid = $this->generateUlid();
 
         $data = $model::create([
-            'id' => $ulid,
-            'name' => $userDTO->name,
-            'email' => $userDTO->email,
+            'id'       => $ulid,
+            'name'     => $userDTO->name,
+            'email'    => $userDTO->email,
             'password' => $userDTO->password,
             'document' => $userDTO->document,
-            'balance' => $userDTO->balance,
-            'type' => $userDTO->type,
+            'balance'  => $userDTO->balance,
+            'type'     => $userDTO->type,
         ]);
 
         return [
-            'user' => $data->id
+            'user' => $data->id,
         ];
     }
 
@@ -91,7 +92,7 @@ class UserRepository
 
         return [
             'document' => $documentExists,
-            'email' => $emailExists
+            'email'    => $emailExists,
         ];
     }
 

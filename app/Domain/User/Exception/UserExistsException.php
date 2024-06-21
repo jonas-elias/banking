@@ -9,4 +9,6 @@ use Exception;
 /**
  * Exception class to throw when user is duplicated.
  */
-class UserExistsException extends Exception {}
+class UserExistsException extends Exception
+{
+}

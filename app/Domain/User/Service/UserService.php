@@ -25,7 +25,8 @@ class UserService
      */
     public function __construct(
         protected UserRepository $userRepository,
-    ) {}
+    ) {
+    }
 
     /**
      * Method to call register function repository and manage business rule.
@@ -54,7 +55,7 @@ class UserService
     protected function userConditions(UserDTO $userDTO): void
     {
         match ($userDTO->type) {
-            UserType::Common->value => new CPF($userDTO->document),
+            UserType::Common->value   => new CPF($userDTO->document),
             UserType::Merchant->value => new CNPJ($userDTO->document),
         };
 

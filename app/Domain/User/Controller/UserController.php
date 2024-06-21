@@ -28,7 +28,8 @@ class UserController
      */
     public function __construct(
         protected UserService $userService,
-    ) {}
+    ) {
+    }
 
     /**
      * Method to register user in banking backend app.

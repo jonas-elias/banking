@@ -74,6 +74,7 @@
         ],
         "test": "co-phpunit --prepend test/bootstrap.php --colors=always",
         "cs-fix": "php-cs-fixer fix $1",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
         "analyse": "phpstan analyse --memory-limit 300M",
         "start": [
             "Composer\\Config::disableProcessTimeout",

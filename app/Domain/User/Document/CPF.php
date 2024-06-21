@@ -20,7 +20,7 @@ class CPF extends Document
     protected function validate(): void
     {
         if (strlen($this->value) !== DocumentType::CPF->value) {
-            throw new DocumentException('Invalid CPF. '.$this->value);
+            throw new DocumentException('Invalid CPF. ' . $this->value);
         }
     }
 }

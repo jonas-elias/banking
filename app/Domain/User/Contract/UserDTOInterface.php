@@ -11,14 +11,14 @@ interface UserDTOInterface
 {
     /**
      * Define the validation messages for each field.
-     * 
+     *
      * @return array
      */
     public function messages(): array;
 
     /**
      * Define the default values for each field.
-     * 
+     *
      * @return array
      */
     public function defaults(): array;

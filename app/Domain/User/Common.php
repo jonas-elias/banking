@@ -10,7 +10,7 @@ namespace App\Domain\User;
 class Common extends User
 {
     /**
-     * @var $attributes
+     * @var
      * Default values.
      */
     protected array $attributes = [

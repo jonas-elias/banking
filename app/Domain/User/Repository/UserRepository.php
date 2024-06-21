@@ -17,8 +17,8 @@ class UserRepository
     /**
      * Method constructor.
      *
-     * @param User $user
-     * @param Common $common
+     * @param User     $user
+     * @param Common   $common
      * @param Merchant $merchant
      *
      * @return void
@@ -27,7 +27,8 @@ class UserRepository
         protected User $user,
         protected Common $common,
         protected Merchant $merchant,
-    ) {}
+    ) {
+    }
 
     /**
      * Method to call register function repository and manage business rule.
@@ -36,10 +37,12 @@ class UserRepository
      *
      * @return void
      */
-    public function create(UserDTO $userDTO): void {}
+    public function create(UserDTO $userDTO): void
+    {
+    }
 
     /**
-     * Method to find users by id
+     * Method to find users by id.
      *
      * @param array $ids
      *

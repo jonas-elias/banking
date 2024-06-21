@@ -10,7 +10,7 @@ namespace App\Domain\User;
 class Merchant extends User
 {
     /**
-     * @var $attributes
+     * @var
      * Default values.
      */
     protected array $attributes = [

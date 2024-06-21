@@ -14,44 +14,44 @@ use App\DTO\Cast\IntegerCast;
 class UserDTO extends BaseDTO implements UserDTOInterface
 {
     /**
-     * @var string $name 
-     * The user name.
+     * @var string
+     *             The user name.
      */
     public string $name;
 
     /**
-     * @var string $document
-     * The user document CPF or CNPJ.
+     * @var string
+     *             The user document CPF or CNPJ.
      */
     public string $document;
 
     /**
-     * @var string $email
-     * The user email address.
+     * @var string
+     *             The user email address.
      */
     public string $email;
 
     /**
-     * @var string $password
-     * The user password.
+     * @var string
+     *             The user password.
      */
     public string $password;
 
     /**
-     * @var int $balance
-     * The user balance in cents.
+     * @var int
+     *          The user balance in cents.
      */
     public int $balance;
 
     /**
-     * @var string $type
-     * The user type either 'common' or 'merchant'.
+     * @var string
+     *             The user type either 'common' or 'merchant'.
      */
     public string $type;
 
     /**
      * Define the validation messages for each field.
-     * 
+     *
      * @return array
      */
     public function messages(): array
@@ -76,7 +76,7 @@ class UserDTO extends BaseDTO implements UserDTOInterface
 
     /**
      * Define the validation rules for each field.
-     * 
+     *
      * @return array
      */
     protected function rules(): array
@@ -93,7 +93,7 @@ class UserDTO extends BaseDTO implements UserDTOInterface
 
     /**
      * Define the default values for each field.
-     * 
+     *
      * @return array
      */
     public function defaults(): array
@@ -105,7 +105,7 @@ class UserDTO extends BaseDTO implements UserDTOInterface
 
     /**
      * Define the cast types for each field.
-     * 
+     *
      * @return array
      */
     protected function casts(): array

@@ -31,9 +31,9 @@ class UserController
     /**
      * Method to register user in banking backend app.
      *
-     * @param RequestInterface $request
+     * @param RequestInterface  $request
      * @param ResponseInterface $response
-     * @param UserDTO $userDTO
+     * @param UserDTO           $userDTO
      *
      * @return ResponseInterface
      */

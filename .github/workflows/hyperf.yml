@@ -38,3 +38,6 @@ jobs:
 
       - name: Static Analysis
         run: composer analyse
+
+      - name: PHP Mess Detector
+        run: composer phpmd

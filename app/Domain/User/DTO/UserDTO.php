@@ -75,6 +75,28 @@ class UserDTO extends BaseDTO implements UserDTOInterface
     }
 
     /**
+     * Define the default values for each field.
+     *
+     * @return array
+     */
+    public function defaults(): array
+    {
+        return [
+            'balance' => 0,
+        ];
+    }
+
+    /**
+     * Define method to get password with hash.
+     *
+     * @return string
+     */
+    public function hashPassword(): string
+    {
+        return password_hash($this->password, PASSWORD_DEFAULT);
+    }
+
+    /**
      * Define the validation rules for each field.
      *
      * @return array
@@ -92,18 +114,6 @@ class UserDTO extends BaseDTO implements UserDTOInterface
     }
 
     /**
-     * Define the default values for each field.
-     *
-     * @return array
-     */
-    public function defaults(): array
-    {
-        return [
-            'balance' => 0,
-        ];
-    }
-
-    /**
      * Define the cast types for each field.
      *
      * @return array
@@ -113,15 +123,5 @@ class UserDTO extends BaseDTO implements UserDTOInterface
         return [
             'balance' => new IntegerCast(),
         ];
-    }
-
-    /**
-     * Define method to get password with hash.
-     *
-     * @return string
-     */
-    public function hashPassword(): string
-    {
-        return password_hash($this->password, PASSWORD_DEFAULT);
     }
 }

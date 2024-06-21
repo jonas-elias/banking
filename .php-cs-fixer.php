@@ -42,7 +42,7 @@ return (new PhpCsFixer\Config())
             'identical' => false,
         ],
         'phpdoc_align' => [
-            'align' => 'left',
+            'align' => 'vertical',
         ],
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'no_multi_line',
@@ -65,12 +65,13 @@ return (new PhpCsFixer\Config())
         'single_quote' => true,
         'standardize_not_equals' => true,
         'multiline_comment_opening_closing' => true,
-        'single_line_empty_body' => true,
+        'single_line_empty_body' => false,
         'strict_param' => true,
         'return_type_declaration' => ['space_before' => 'none'],
         'fully_qualified_strict_types' => true,
         'phpdoc_param_order' => true,
         'phpdoc_indent' => true,
+        'phpdoc_summary' => true,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

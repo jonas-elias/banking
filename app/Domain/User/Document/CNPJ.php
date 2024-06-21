@@ -20,7 +20,7 @@ class CNPJ extends Document
     protected function validate(): void
     {
         if (strlen($this->value) !== DocumentType::CNPJ->value) {
-            throw new DocumentException('Invalid CNPJ. '.$this->value);
+            throw new DocumentException('Invalid CNPJ. ' . $this->value);
         }
     }
 }

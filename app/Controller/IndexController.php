@@ -5,8 +5,11 @@ declare(strict_types=1);
  * This file is part of Hyperf.
  *
  * @see     https://www.hyperf.io
+ *
  * @document https://hyperf.wiki
+ *
  * @contact  group@hyperf.io
+ *
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
@@ -20,7 +23,7 @@ class IndexController extends AbstractController
         $method = $this->request->getMethod();
 
         return [
-            'method' => $method,
+            'method'  => $method,
             'message' => "Hello {$user}.",
         ];
     }

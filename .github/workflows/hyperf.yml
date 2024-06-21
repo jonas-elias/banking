@@ -1,4 +1,4 @@
-name: CI for Hyperf Project
+name: CI Banking Application
 
 on:
   push:

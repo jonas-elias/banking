@@ -32,7 +32,7 @@ class DocumentTest extends TestCase
         $cpfInvalid = str_repeat('1', 5);
 
         $this->expectException(DocumentException::class);
-        $this->expectExceptionMessage('Invalid CPF. '.$cpfInvalid);
+        $this->expectExceptionMessage('Invalid CPF. ' . $cpfInvalid);
 
         new CPF($cpfInvalid);
     }
@@ -42,7 +42,7 @@ class DocumentTest extends TestCase
         $cnpjInvalid = str_repeat('1', 5);
 
         $this->expectException(DocumentException::class);
-        $this->expectExceptionMessage('Invalid CNPJ. '.$cnpjInvalid);
+        $this->expectExceptionMessage('Invalid CNPJ. ' . $cnpjInvalid);
 
         new CNPJ($cnpjInvalid);
     }

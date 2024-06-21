@@ -19,6 +19,12 @@ use App\Constants\ErrorCode;
 use Hyperf\Server\Exception\ServerException;
 use Throwable;
 
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class BusinessException extends ServerException
 {
     public function __construct(int $code = 0, ?string $message = null, ?Throwable $previous = null)

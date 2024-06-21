@@ -21,6 +21,12 @@ use Hyperf\Coordinator\CoordinatorManager;
 use Hyperf\Event\Annotation\Listener;
 use Hyperf\Event\Contract\ListenerInterface;
 
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 #[Listener]
 class ResumeExitCoordinatorListener implements ListenerInterface
 {

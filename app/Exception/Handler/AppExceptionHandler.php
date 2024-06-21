@@ -21,6 +21,12 @@ use Hyperf\HttpMessage\Stream\SwooleStream;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
+/**
+ * This will suppress all the PMD warnings in
+ * this class.
+ *
+ * @SuppressWarnings(PHPMD)
+ */
 class AppExceptionHandler extends ExceptionHandler
 {
     public function __construct(protected StdoutLoggerInterface $logger)

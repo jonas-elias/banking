@@ -6,9 +6,6 @@ return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
-        '@Symfony' => true,
-        '@DoctrineAnnotation' => true,
-        '@PhpCsFixer' => true,
         'array_syntax' => [
             'syntax' => 'short',
         ],
@@ -39,10 +36,6 @@ return (new PhpCsFixer\Config())
             ],
             'sort_algorithm' => 'alpha',
         ],
-        'single_line_comment_style' => [
-            'comment_types' => [
-            ],
-        ],
         'yoda_style' => [
             'always_move_variable' => false,
             'equal' => false,
@@ -67,12 +60,17 @@ return (new PhpCsFixer\Config())
         'not_operator_with_successor_space' => true,
         'not_operator_with_space' => false,
         'ordered_class_elements' => true,
-        'php_unit_strict' => false,
-        'phpdoc_separation' => false,
+        'php_unit_strict' => true,
+        'phpdoc_separation' => true,
         'single_quote' => true,
         'standardize_not_equals' => true,
         'multiline_comment_opening_closing' => true,
-        'single_line_empty_body' => false,
+        'single_line_empty_body' => true,
+        'strict_param' => true,
+        'return_type_declaration' => ['space_before' => 'none'],
+        'fully_qualified_strict_types' => true,
+        'phpdoc_param_order' => true,
+        'phpdoc_indent' => true,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

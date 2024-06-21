@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Domain\User\Document;
 
 /**
- * Abstract class to create signature of methods
+ * Abstract class to create signature of methods.
  */
 abstract class Document
 {
     /**
-     * Method constructor
+     * Method constructor.
      *
      * @param string $value
      *
@@ -22,7 +22,7 @@ abstract class Document
     }
 
     /**
-     * Method to get value document
+     * Method to get value document.
      *
      * @return string
      */
@@ -32,7 +32,7 @@ abstract class Document
     }
 
     /**
-     * Method to validate type of concret class
+     * Method to validate type of concret class.
      *
      * @return void
      */

@@ -8,15 +8,14 @@ use App\Domain\User\Document\CNPJ;
 use App\Domain\User\Document\CPF;
 use App\Domain\User\Document\Document;
 use App\Domain\User\Document\Exception\DocumentException;
-use InvalidArgumentException;
 
 /**
- * Factory class to make object document
+ * Factory class to make object document.
  */
 class DocumentFactory
 {
     /**
-     * Factory method to create classes of documents
+     * Factory method to create classes of documents.
      *
      * @param string $type
      * @param string $value

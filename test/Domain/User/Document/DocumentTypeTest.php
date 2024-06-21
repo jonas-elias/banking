@@ -24,7 +24,7 @@ class DocumentTypeTest extends TestCase
     public function testEnumCases()
     {
         $expectedCases = [
-            'CPF' => 11,
+            'CPF'  => 11,
             'CNPJ' => 14,
         ];
 

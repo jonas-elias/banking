@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HyperfTest\Domain\User\Document;
 
 use App\Domain\User\Document\CNPJ;
-use PHPUnit\Framework\TestCase;
 use App\Domain\User\Document\CPF;
 use App\Domain\User\Document\Exception\DocumentException;
 use App\Domain\User\Document\Factory\DocumentFactory;
+use PHPUnit\Framework\TestCase;
 
 class DocumentFactoryTest extends TestCase
 {

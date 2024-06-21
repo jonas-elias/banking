@@ -7,7 +7,7 @@ namespace App\Domain\User\Document\Exception;
 use Exception;
 
 /**
- * Exception class to invalid document
+ * Exception class to invalid document.
  */
 class DocumentException extends Exception
 {

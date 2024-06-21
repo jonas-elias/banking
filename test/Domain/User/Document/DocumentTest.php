@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HyperfTest\Domain\User\Document;
 
 use App\Domain\User\Document\CNPJ;
-use PHPUnit\Framework\TestCase;
 use App\Domain\User\Document\CPF;
 use App\Domain\User\Document\Exception\DocumentException;
+use PHPUnit\Framework\TestCase;
 
 class DocumentTest extends TestCase
 {
@@ -32,7 +32,7 @@ class DocumentTest extends TestCase
         $cpfInvalid = str_repeat('1', 5);
 
         $this->expectException(DocumentException::class);
-        $this->expectExceptionMessage('Invalid CPF. ' . $cpfInvalid);
+        $this->expectExceptionMessage('Invalid CPF. '.$cpfInvalid);
 
         new CPF($cpfInvalid);
     }
@@ -42,7 +42,7 @@ class DocumentTest extends TestCase
         $cnpjInvalid = str_repeat('1', 5);
 
         $this->expectException(DocumentException::class);
-        $this->expectExceptionMessage('Invalid CNPJ. ' . $cnpjInvalid);
+        $this->expectExceptionMessage('Invalid CNPJ. '.$cnpjInvalid);
 
         new CNPJ($cnpjInvalid);
     }

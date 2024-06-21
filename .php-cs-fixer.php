@@ -65,7 +65,7 @@ return (new PhpCsFixer\Config())
         'single_quote' => true,
         'standardize_not_equals' => true,
         'multiline_comment_opening_closing' => true,
-        'single_line_empty_body' => true,
+        'single_line_empty_body' => false,
         'strict_param' => true,
         'return_type_declaration' => ['space_before' => 'none'],
         'fully_qualified_strict_types' => true,

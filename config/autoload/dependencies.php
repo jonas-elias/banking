@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+
+use App\Request\Dependency\RequestDependecy;
+use App\Response\Dependency\ResponseDependency;
+
 /**
  * This file is part of Hyperf.
  *
@@ -10,4 +14,6 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
+    ...RequestDependecy::getBindings(),
+    ...ResponseDependency::getBindings(),
 ];

@@ -14,12 +14,12 @@ class DatabaseTransaction
     /**
      * Method constructor.
      *
-     * @param Db $db
+     * @param Db $database
      *
      * @return void
      */
     public function __construct(
-        protected Db $db
+        protected Db $database
     ) {
     }
 
@@ -32,6 +32,6 @@ class DatabaseTransaction
      */
     public function executeTransaction(callable $function): void
     {
-        $this->db::transaction($function);
+        $this->database::transaction($function);
     }
 }

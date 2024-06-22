@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HyperfTest\Database;
 
-use PHPUnit\Framework\TestCase;
 use App\Database\DatabaseTransaction;
 use App\Database\DatabaseTransactionInterface;
 use App\Database\Dependency\DatabaseTransactionDependency;
+use PHPUnit\Framework\TestCase;
 
 class DatabaseTransactionDependencyTest extends TestCase
 {
@@ -17,6 +17,6 @@ class DatabaseTransactionDependencyTest extends TestCase
 
         $this->assertIsArray($bindings);
         $this->assertArrayHasKey(DatabaseTransactionInterface::class, $bindings);
-        $this->assertEquals(DatabaseTransaction::class, $bindings[DatabaseTransactionInterface::class]);
+        $this->assertSame(DatabaseTransaction::class, $bindings[DatabaseTransactionInterface::class]);
     }
 }

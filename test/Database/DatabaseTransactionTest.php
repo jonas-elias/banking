@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HyperfTest\Database;
 
-use PHPUnit\Framework\TestCase;
 use App\Database\DatabaseTransaction;
 use Exception;
 use Hyperf\DbConnection\Db;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 
 class DatabaseTransactionTest extends TestCase
 {

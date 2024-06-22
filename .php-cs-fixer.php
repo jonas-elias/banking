@@ -5,7 +5,9 @@ declare(strict_types=1);
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
+        '@PSR12' => true,
         '@PSR2' => true,
+        '@PSR1' => true,
         'array_syntax' => [
             'syntax' => 'short',
         ],

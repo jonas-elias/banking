@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Database\Dependency\DatabaseTransactionDependency;
 use App\Request\Dependency\RequestDependecy;
 use App\Response\Dependency\ResponseDependency;
 
@@ -19,4 +20,5 @@ use App\Response\Dependency\ResponseDependency;
 return [
     ...RequestDependecy::getBindings(),
     ...ResponseDependency::getBindings(),
+    ...DatabaseTransactionDependency::getBindings(),
 ];

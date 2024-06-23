@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Tests\Job;
 
 use App\Job\NotificationEmailJob;
+use GuzzleHttp\Client;
 use Hyperf\Context\ApplicationContext;
+use Hyperf\Contract\ContainerInterface;
 use Hyperf\Guzzle\ClientFactory;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Client;
-use Hyperf\Contract\ContainerInterface;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
+use PHPUnit\Framework\TestCase;
 
 class NotificationEmailJobTest extends TestCase
 {

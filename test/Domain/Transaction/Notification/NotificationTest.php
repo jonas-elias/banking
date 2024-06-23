@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HyperfTest\Domain\Transaction\Notification;
 
-use App\Domain\Transaction\Notification\Notification;
 use App\Domain\Transaction\Notification\Email\NotificationEmailStrategy;
+use App\Domain\Transaction\Notification\Notification;
 use App\Domain\Transaction\Notification\NotificationType;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 
 class NotificationTest extends TestCase
 {

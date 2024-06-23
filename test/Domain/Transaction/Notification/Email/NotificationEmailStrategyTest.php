@@ -6,8 +6,8 @@ namespace HyperfTest\Domain\Transaction\Notification\Email;
 
 use App\Domain\Transaction\Notification\Email\NotificationEmailStrategy;
 use App\Service\NotificationEmailQueue;
-use PHPUnit\Framework\TestCase;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 
 class NotificationEmailStrategyTest extends TestCase
 {

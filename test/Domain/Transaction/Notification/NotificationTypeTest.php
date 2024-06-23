@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace HyperfTest\Domain\Transaction\Notification;
 
 use App\Domain\Transaction\Notification\NotificationType;
+use Error;
 use PHPUnit\Framework\TestCase;
 
 class NotificationTypeTest extends TestCase
 {
     public function testNotificationTypeEnumValues()
     {
-        $this->assertEquals('email', NotificationType::EMAIL->value);
-        $this->assertEquals('sms', NotificationType::SMS->value);
+        $this->assertSame('email', NotificationType::EMAIL->value);
+        $this->assertSame('sms', NotificationType::SMS->value);
     }
 
     public function testNotificationTypeEnumInstance()
@@ -28,7 +29,7 @@ class NotificationTypeTest extends TestCase
 
     public function testNotificationTypeInvalidEnumValue()
     {
-        $this->expectException(\Error::class);
+        $this->expectException(Error::class);
         NotificationType::INVALID;
     }
 }

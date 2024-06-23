@@ -22,7 +22,7 @@ class NotificationEmailQueue
     /**
      * Method constructor.
      *
-     * @param DriverFactory $driverFactory
+     * @param DriverFactory      $driverFactory
      * @param ApplicationContext $driverFactory
      *
      * @return void

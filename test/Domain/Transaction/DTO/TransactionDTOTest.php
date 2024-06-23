@@ -21,14 +21,6 @@ class TransactionDTOTest extends TestCase
         parent::tearDown();
     }
 
-    private function getProtectedMethod(TransactionDTO $dto, string $methodName)
-    {
-        $reflector = new ReflectionClass($dto);
-        $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
-        return $method;
-    }
-
     public function testTransactionDTOValidationRules(): void
     {
         $dto = new TransactionDTO([
@@ -93,5 +85,13 @@ class TransactionDTOTest extends TestCase
         $defaults = $dto->defaults();
 
         $this->assertSame([], $defaults);
+    }
+
+    private function getProtectedMethod(TransactionDTO $dto, string $methodName)
+    {
+        $reflector = new ReflectionClass($dto);
+        $method = $reflector->getMethod($methodName);
+        $method->setAccessible(true);
+        return $method;
     }
 }

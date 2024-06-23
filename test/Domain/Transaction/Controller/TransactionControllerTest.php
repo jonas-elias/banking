@@ -10,12 +10,13 @@ use App\Domain\Transaction\Exception\PayerException;
 use App\Domain\Transaction\Service\TransactionService;
 use App\Request\RequestInterface;
 use App\Response\ResponseInterface;
+use Exception;
 use Hyperf\Validation\ValidationException;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
 use Mockery;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ResponseInterface as Psr7ResponseInterface;
 
 class TransactionControllerTest extends TestCase
 {
@@ -108,7 +109,7 @@ class TransactionControllerTest extends TestCase
         $transactionDTO->value = 100;
 
         $transactionDTO->shouldReceive('fromRequest')->with($request)->andReturnSelf();
-        $transactionService->shouldReceive('transfer')->with($transactionDTO)->andThrow(new \Exception('General error'));
+        $transactionService->shouldReceive('transfer')->with($transactionDTO)->andThrow(new Exception('General error'));
 
         $response->shouldReceive('json')->with(['errors' => 'General error'])->andReturnSelf();
         $response->shouldReceive('withStatus')->with(500)->andReturnSelf();
@@ -131,8 +132,7 @@ class TransactionControllerTest extends TestCase
 
     protected function createResponseMock(): ResponseInterface|LegacyMockInterface|MockInterface
     {
-        $mock = Mockery::mock(ResponseInterface::class, Psr7ResponseInterface::class);
-        return $mock;
+        return Mockery::mock(ResponseInterface::class, Psr7ResponseInterface::class);
     }
 
     protected function createTransactionDTOMock(): TransactionDTO|LegacyMockInterface|MockInterface

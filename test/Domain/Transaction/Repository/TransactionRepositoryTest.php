@@ -47,7 +47,7 @@ class TransactionRepositoryTest extends TestCase
 
         $this->assertIsArray($result);
         $this->assertArrayHasKey('transaction', $result);
-        $this->assertEquals('unique-id', $result['transaction']);
+        $this->assertSame('unique-id', $result['transaction']);
     }
 
     protected function createTransactionDTOMock(): TransactionDTO|LegacyMockInterface|MockInterface

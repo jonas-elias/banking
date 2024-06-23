@@ -63,15 +63,38 @@ class UserRepository
     }
 
     /**
+     * Save user model based in change values received in param.
+     *
+     * @param User $user
+     *
+     * @return void
+     */
+    public function save(User $user): void
+    {
+        $user->save();
+    }
+
+    /**
      * Find users by ids.
      *
      * @param array $ids
      *
-     * @return User
+     * @return array<User>
      */
-    public function findUsersByIds(array $ids): User
+    public function findUsersByIds(array $ids): array
     {
-        return $this->user::query()->whereIn($ids)->sharedLock()->get();
+        $users = $this->user::query()
+            ->whereIn('id', $ids)
+            ->sharedLock()
+            ->get();
+
+        $mappedUsers = [];
+
+        foreach ($users as $user) {
+            $mappedUsers[$user->id] = $user;
+        }
+
+        return $mappedUsers;
     }
 
     /**

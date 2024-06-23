@@ -37,8 +37,8 @@ class TransactionRepository
 
         $data = $this->transaction::create([
             'id'       => $ulid,
-            'payer_id'     => $transactionDTO->payer,
-            'payee_id'    => $transactionDTO->payee,
+            'payer_id' => $transactionDTO->payer,
+            'payee_id' => $transactionDTO->payee,
             'value'    => $transactionDTO->value,
         ]);
 

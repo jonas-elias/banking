@@ -32,10 +32,9 @@ services:
   prometheus:
     image: prom/prometheus:v2.53.0
     container_name: prometheus-transactions
-    # command: [ "--config.file=/prometheus-config/prometheus.yml" ]
-    # volumes:
-    #   - ./prometheus-config:/prometheus-config
-    #   - ./../prometheus:/prometheus
+    command: [ "--config.file=/prometheus/prometheus.yml" ]
+    volumes:
+      - ./observability/prometheus:/prometheus
     ports: 
       - 9090:9090
 
@@ -48,21 +47,18 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./../grafana_storage:/var/lib/grafana
+      - ./observability/grafana:/var/lib/grafana
 
   db:
     hostname: db
     container_name: database-transactions
     image: postgres:15.4
-
     environment:
       POSTGRES_DB: database
       POSTGRES_PASSWORD: postgre
       POSTGRES_USER: postgre
-
     ports:
       - 5432:5432
-
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgre -d database"]
       interval: 10s

@@ -1,0 +1,30 @@
+{
+	"ulid": "01J14ZYR273T5S0G11H16CSY8C",
+	"minTime": 1719199881183,
+	"maxTime": 1719208800000,
+	"stats": {
+		"numSamples": 507697,
+		"numSeries": 930,
+		"numChunks": 4285
+	},
+	"compaction": {
+		"level": 2,
+		"sources": [
+			"01J14F29CBGMEC4HPV28PPNBYB",
+			"01J14GPSCM64GY5YMJXE8KWX5K"
+		],
+		"parents": [
+			{
+				"ulid": "01J14F29CBGMEC4HPV28PPNBYB",
+				"minTime": 1719199881183,
+				"maxTime": 1719201600000
+			},
+			{
+				"ulid": "01J14GPSCM64GY5YMJXE8KWX5K",
+				"minTime": 1719201601475,
+				"maxTime": 1719208800000
+			}
+		]
+	},
+	"version": 1
+}

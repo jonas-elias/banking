@@ -37,7 +37,7 @@ return [
                 'port' => 9501,
             ],
             'options' => [
-                'endpoint_url' => env('ZIPKIN_ENDPOINT_URL', 'http://zipkin-transactions:9411/api/v2/spans'),
+                'endpoint_url' => env('ZIPKIN_ENDPOINT_URL', 'http://banking-zipkin:9411/api/v2/spans'),
                 'timeout'      => env('ZIPKIN_TIMEOUT', 1),
             ],
             'sampler' => BinarySampler::createAsAlwaysSample(),

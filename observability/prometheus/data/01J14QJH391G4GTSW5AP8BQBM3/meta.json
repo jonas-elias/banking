@@ -1,0 +1,17 @@
+{
+	"ulid": "01J14QJH391G4GTSW5AP8BQBM3",
+	"minTime": 1719208801561,
+	"maxTime": 1719216000000,
+	"stats": {
+		"numSamples": 398692,
+		"numSeries": 879,
+		"numChunks": 3417
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01J14QJH391G4GTSW5AP8BQBM3"
+		]
+	},
+	"version": 1
+}

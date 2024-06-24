@@ -1,37 +1,38 @@
 version: "3"
 
-name: transactions
+name: banking
 
 services:
-  web:
+  banking:
     build:
       context: "./"
       dockerfile: "Dockerfile"
-    container_name: transactions
+    container_name: banking
     volumes:
-      - ./:/var/www/
-    tty: true
+      - ./:/opt/www
     ports:
       - 9501:9501
     depends_on:
       - valkey
-    restart: always
+    environment:
+      - APP_ENV=dev
+      - SCAN_CACHEABLE=false
 
   valkey:
-    container_name: valkey-queue
+    container_name: banking-valkey
     image: valkey/valkey:bookworm
     ports:
       - 6379:6379
 
   zipkin:
     image: openzipkin/zipkin
-    container_name: zipkin-transactions
+    container_name: banking-zipkin
     ports:
       - 9411:9411
 
   prometheus:
     image: prom/prometheus:v2.53.0
-    container_name: prometheus-transactions
+    container_name: banking-prometheus
     command: [ "--config.file=/prometheus/prometheus.yml" ]
     volumes:
       - ./observability/prometheus:/prometheus
@@ -40,7 +41,7 @@ services:
 
   grafana:
     image: grafana/grafana:10.4.4
-    container_name: grafana-transactions
+    container_name: banking-grafana
     restart: unless-stopped
     environment:
       - TERM=linux
@@ -51,7 +52,7 @@ services:
 
   db:
     hostname: db
-    container_name: database-transactions
+    container_name: banking-database
     image: postgres:15.4
     environment:
       POSTGRES_DB: database

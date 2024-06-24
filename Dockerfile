@@ -37,4 +37,11 @@ RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/i
     redis \
     swoole
 
+WORKDIR /opt/www
+
+COPY . /opt/www
+RUN composer install --no-dev -o && php bin/hyperf.php
+
 EXPOSE 9501
+
+ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]

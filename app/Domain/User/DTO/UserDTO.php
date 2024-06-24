@@ -6,7 +6,7 @@ namespace App\Domain\User\DTO;
 
 use App\Domain\User\Contract\UserDTOInterface;
 use App\DTO\BaseDTO;
-use App\DTO\Cast\IntegerCast;
+use App\DTO\Cast\IntegerConversionCast;
 
 /**
  * Class DTO to user get params and basic validations.
@@ -121,7 +121,7 @@ class UserDTO extends BaseDTO implements UserDTOInterface
     protected function casts(): array
     {
         return [
-            'balance' => new IntegerCast(),
+            'balance' => new IntegerConversionCast(),
         ];
     }
 }

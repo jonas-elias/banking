@@ -8,12 +8,12 @@ use App\Constants\HttpStatus;
 use App\Domain\Transaction\Authorization\Gateway\PicPay\PicPayGateway;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\AuthorizationException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Guzzle\ClientFactory;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
 
 class PicPayGatewayTest extends TestCase
 {

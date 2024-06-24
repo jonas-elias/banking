@@ -15,8 +15,8 @@ interface AuthorizationInterface
     /**
      * Verify authorization payment with type.
      *
-     * @param GatewayType       $type
-     * @param TransactionDTO    $transactionDTO
+     * @param GatewayType    $type
+     * @param TransactionDTO $transactionDTO
      *
      * @return void
      */

@@ -14,7 +14,7 @@ interface GatewayInterface
     /**
      * Verify authorization transaction based gateway.
      *
-     * @param TransactionDTO    $transactionDTO
+     * @param TransactionDTO $transactionDTO
      *
      * @return void
      */

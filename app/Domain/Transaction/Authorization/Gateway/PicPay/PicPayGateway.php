@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Transaction\Authorization\Gateway\PicPay;
 
 use App\Constants\HttpStatus;
@@ -17,8 +19,8 @@ class PicPayGateway implements GatewayInterface
     /**
      * Method constructor.
      *
-     * @param ConfigInterface   $config
-     * @param ClientFactory     $clientHttp
+     * @param ConfigInterface $config
+     * @param ClientFactory   $clientHttp
      *
      * @return void
      */
@@ -31,7 +33,7 @@ class PicPayGateway implements GatewayInterface
     /**
      * Authorize transaction based in webhook picpay.
      *
-     * @param TransactionDTO    $transactionDTO
+     * @param TransactionDTO $transactionDTO
      *
      * @return void
      *

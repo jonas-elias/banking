@@ -38,8 +38,8 @@ class Authorization implements AuthorizationInterface
     /**
      * Authorization based in gateway type.
      *
-     * @param GatewayType       $type
-     * @param TransactionDTO    $transactionDTO
+     * @param GatewayType    $type
+     * @param TransactionDTO $transactionDTO
      *
      * @return void
      */

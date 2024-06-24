@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Transaction\Controller;
 
 use App\Domain\Transaction\DTO\TransactionDTO;
+use App\Domain\Transaction\Exception\AuthorizationException;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
 use App\Domain\Transaction\Service\TransactionService;
@@ -56,6 +57,9 @@ class TransactionController
         } catch (PayerException | PayeeException $pe) {
             return $response->json(['errors' => 'User(s) invalid identification.'])
                 ->withStatus(422);
+        } catch (AuthorizationException $ae) {
+            return $response->json(['errors' => 'Authorization denied.'])
+                ->withStatus(403);
         } catch (Throwable $th) {
             return $response->json(['errors' => $th->getMessage()])
                 ->withStatus(500);

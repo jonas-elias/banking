@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Domain\Transaction\Service;
 
 use App\Database\DatabaseTransaction;
+use App\Domain\Transaction\Authorization\Authorization;
+use App\Domain\Transaction\Authorization\Gateway\GatewayType;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
@@ -22,15 +24,18 @@ class TransactionService
      * Method constructor.
      *
      * @param DatabaseTransaction   $databaseTransaction
-     * @param TransactionRepository $transRepository
      * @param UserRepository        $userRepository
+     * @param Authorization         $authorization
+     * @param TransactionRepository $transRepository
+     * @param Notification          $notification
      *
      * @return void
      */
     public function __construct(
         protected DatabaseTransaction $databaseTransaction,
-        protected TransactionRepository $transRepository,
         protected UserRepository $userRepository,
+        protected Authorization $authorization,
+        protected TransactionRepository $transRepository,
         protected Notification $notification,
     ) {
     }
@@ -52,6 +57,8 @@ class TransactionService
 
             $payer->debit($transactionDTO->value);
             $payee->credit($transactionDTO->value);
+
+            $this->authorization->authorize(GatewayType::PICPAY, $transactionDTO);
 
             $this->userRepository->save($payer);
             $this->userRepository->save($payee);

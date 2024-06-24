@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "063548bbc10885e6b8542d9fb883e508",
+    "content-hash": "81465011980fbf3ec828dede8f814c01",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -483,6 +483,77 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
+        },
+        {
+            "name": "friendsofhyperf/http-logger",
+            "version": "v3.1.31",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friendsofhyperf/http-logger.git",
+                "reference": "0e133112d14c123a7ca6ee8423f0c6db4675099a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friendsofhyperf/http-logger/zipball/0e133112d14c123a7ca6ee8423f0c6db4675099a",
+                "reference": "0e133112d14c123a7ca6ee8423f0c6db4675099a",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/config": "~3.1.0",
+                "hyperf/coroutine": "~3.1.0",
+                "hyperf/http-server": "~3.1.0",
+                "hyperf/logger": "~3.1.0",
+                "hyperf/support": "~3.1.0",
+                "nesbot/carbon": "^2.0 || ^3.0"
+            },
+            "suggest": {
+                "hyperf/cache": "Require this component for driver 'file'."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "FriendsOfHyperf\\Http\\Logger\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfHyperf\\Http\\Logger\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "huangdijia",
+                    "email": "huangdijia@gmail.com"
+                }
+            ],
+            "description": "The http logger component for Hyperf.",
+            "keywords": [
+                "hyperf",
+                "v3.1"
+            ],
+            "support": {
+                "issues": "https://github.com/friendsofhyperf/components/issues",
+                "pull-request": "https://github.com/friendsofhyperf/components/pulls",
+                "source": "https://github.com/friendsofhyperf/components"
+            },
+            "funding": [
+                {
+                    "url": "https://hdj.me/sponsors/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/huangdijia",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-17T01:41:30+00:00"
         },
         {
             "name": "friendsofhyperf/validated-dto",

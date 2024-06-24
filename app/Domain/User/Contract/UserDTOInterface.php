@@ -22,4 +22,11 @@ interface UserDTOInterface
      * @return array
      */
     public function defaults(): array;
+
+    /**
+     * Define method to get password with hash.
+     *
+     * @return string
+     */
+    public function hashPassword(): string;
 }

@@ -11,7 +11,9 @@ For monitoring and observability, the application employs **Prometheus** and **G
 
 This combination of technologies not only ensures optimized performance and secure operation but also provides a user experience supported by a reliable and well-monitored backend.
 
-![arch_banking drawio-3](https://github.com/jonas-elias/banking/assets/48037643/df9beaab-d9e5-4739-8aad-c48ac0aebf89)
+<p align="center">
+  <img src="https://github.com/jonas-elias/banking/assets/48037643/df9beaab-d9e5-4739-8aad-c48ac0aebf89" alt="arch_banking drawio-3">
+</p>
 
 ## Installation 🚀
 

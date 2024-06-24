@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace HyperfTest\Domain\User\Service;
 
-use App\Domain\User\Document\CNPJ;
-use App\Domain\User\Document\CPF;
 use App\Domain\User\DTO\UserDTO;
 use App\Domain\User\Exception\UserExistsException;
 use App\Domain\User\Repository\UserRepository;

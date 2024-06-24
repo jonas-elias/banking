@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Transaction\Controller;
 
+use App\Domain\Transaction\Contract\TransactionServiceInterface;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\AuthorizationException;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
-use App\Domain\Transaction\Service\TransactionService;
 use App\Request\RequestInterface;
 use App\Response\ResponseInterface;
 use Hyperf\Validation\ValidationException;
@@ -23,12 +23,12 @@ class TransactionController
     /**
      * Method constructor.
      *
-     * @param TransactionService $transactionService
+     * @param TransactionServiceInterface $transactionService
      *
      * @return void
      */
     public function __construct(
-        protected TransactionService $transactionService
+        protected TransactionServiceInterface $transactionService
     ) {
     }
 

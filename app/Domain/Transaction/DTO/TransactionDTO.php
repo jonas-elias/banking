@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Domain\Transaction\DTO;
 
+use App\Domain\Transaction\Contract\TransactionDTOInterface;
 use App\DTO\BaseDTO;
 use App\DTO\Cast\IntegerConversionCast;
 
 /**
  * Class DTO to transaction get params and basic validations.
  */
-class TransactionDTO extends BaseDTO
+class TransactionDTO extends BaseDTO implements TransactionDTOInterface
 {
     /**
      * @var string

@@ -9,6 +9,7 @@ use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\AuthorizationException;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
+use App\Domain\User\Exception\UserDebitException;
 use App\Request\RequestInterface;
 use App\Response\ResponseInterface;
 use Hyperf\Validation\ValidationException;
@@ -56,6 +57,9 @@ class TransactionController
                 ->withStatus(422);
         } catch (PayerException | PayeeException $pe) {
             return $response->json(['errors' => 'User(s) invalid identification.'])
+                ->withStatus(422);
+        } catch (UserDebitException $ue) {
+            return $response->json(['errors' => 'Insufficient balance.'])
                 ->withStatus(422);
         } catch (AuthorizationException $ae) {
             return $response->json(['errors' => 'Authorization denied.'])

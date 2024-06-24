@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Transaction\DTO;
 
 use App\DTO\BaseDTO;
-use FriendsOfHyperf\ValidatedDTO\Casting\IntegerCast;
+use App\DTO\Cast\IntegerConversionCast;
 
 /**
  * Class DTO to transaction get params and basic validations.
@@ -80,7 +80,7 @@ class TransactionDTO extends BaseDTO
     protected function casts(): array
     {
         return [
-            'value' => new IntegerCast(),
+            'value' => new IntegerConversionCast(),
         ];
     }
 }

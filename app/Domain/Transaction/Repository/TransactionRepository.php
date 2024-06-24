@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Domain\Transaction\Repository;
 
+use App\Domain\Transaction\Contract\TransactionRepositoryInterface;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Transaction;
 
 /**
  * Transaction repository class to create transaction of money in database.
  */
-class TransactionRepository
+class TransactionRepository implements TransactionRepositoryInterface
 {
     /**
      * Method constructor.

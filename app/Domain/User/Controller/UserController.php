@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\User\Controller;
 
+use App\Domain\User\Contract\UserServiceInterface;
 use App\Domain\User\Document\Exception\DocumentException;
 use App\Domain\User\DTO\UserDTO;
 use App\Domain\User\Exception\UserExistsException;
-use App\Domain\User\Service\UserService;
 use App\Exception\ValidationException;
 use App\Request\RequestInterface;
 use App\Response\ResponseInterface;
@@ -22,12 +22,12 @@ class UserController
     /**
      * Method constructor.
      *
-     * @param UserService $userService
+     * @param UserServiceInterface $userService
      *
      * @return void
      */
     public function __construct(
-        protected UserService $userService,
+        protected UserServiceInterface $userService,
     ) {
     }
 
@@ -38,7 +38,7 @@ class UserController
      * @param ResponseInterface $response
      * @param UserDTO           $userDTO
      *
-     * @return ResponseInterface
+     * @return Psr7ResponseInterface
      */
     public function register(RequestInterface $request, ResponseInterface $response, UserDTO $userDTO): Psr7ResponseInterface
     {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User\Contract;
+namespace App\Domain\Transaction\Contract;
 
 /**
- * Interface UserDTO define necessary methods.
+ * Interface DTO to transaction get params and basic validations.
  */
-interface UserDTOInterface
+interface TransactionDTOInterface
 {
     /**
      * Define the validation messages for each field.
@@ -22,11 +22,4 @@ interface UserDTOInterface
      * @return array
      */
     public function defaults(): array;
-
-    /**
-     * Define method to get password with hash.
-     *
-     * @return string
-     */
-    public function hashPassword(): string;
 }

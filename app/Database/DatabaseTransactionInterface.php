@@ -9,4 +9,12 @@ namespace App\Database;
  */
 interface DatabaseTransactionInterface
 {
+    /**
+     * Execute callable function passed like param.
+     *
+     * @param callable $function
+     *
+     * @return void
+     */
+    public function executeTransaction(callable $function): void;
 }

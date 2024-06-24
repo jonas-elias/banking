@@ -9,7 +9,7 @@ use Hyperf\DbConnection\Db;
 /**
  * Database transaction class to connect in domain.
  */
-class DatabaseTransaction
+class DatabaseTransaction implements DatabaseTransactionInterface
 {
     /**
      * Method constructor.

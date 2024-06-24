@@ -6,6 +6,7 @@ namespace HyperfTest\Domain\Transaction\Controller;
 
 use App\Domain\Transaction\Controller\TransactionController;
 use App\Domain\Transaction\DTO\TransactionDTO;
+use App\Domain\Transaction\Exception\AuthorizationException;
 use App\Domain\Transaction\Exception\PayerException;
 use App\Domain\Transaction\Service\TransactionService;
 use App\Request\RequestInterface;
@@ -90,6 +91,29 @@ class TransactionControllerTest extends TestCase
 
         $response->shouldReceive('json')->with(['errors' => 'User(s) invalid identification.'])->andReturnSelf();
         $response->shouldReceive('withStatus')->with(422)->andReturnSelf();
+
+        $controller = new TransactionController($transactionService);
+        $result = $controller->transfer($request, $response, $transactionDTO);
+
+        $this->assertInstanceOf(Psr7ResponseInterface::class, $result);
+    }
+
+    public function testTransactionControllerTransferAuthorizationException(): void
+    {
+        $transactionService = $this->createTransactionServiceMock();
+        $request = $this->createRequestMock();
+        $response = $this->createResponseMock();
+        $transactionDTO = $this->createTransactionDTOMock();
+
+        $transactionDTO->payer = 'payer_id';
+        $transactionDTO->payee = 'payee_id';
+        $transactionDTO->value = 100;
+
+        $transactionDTO->shouldReceive('fromRequest')->with($request)->andReturnSelf();
+        $transactionService->shouldReceive('transfer')->with($transactionDTO)->andThrow(new AuthorizationException('Authorization exception.'));
+
+        $response->shouldReceive('json')->with(['errors' => 'Authorization denied.'])->andReturnSelf();
+        $response->shouldReceive('withStatus')->with(403)->andReturnSelf();
 
         $controller = new TransactionController($transactionService);
         $result = $controller->transfer($request, $response, $transactionDTO);

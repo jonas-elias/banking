@@ -15,7 +15,7 @@ class MerchantTest extends TestCase
     {
         $merchant = new Merchant();
 
-        $this->assertEquals(UserType::Merchant->value, $merchant->type);
+        $this->assertSame(UserType::Merchant->value, $merchant->type);
     }
 
     public function testMerchantDebitThrowsUserDebitException()

@@ -18,7 +18,7 @@ class UserTest extends TestCase
 
         $user->credit(500);
 
-        $this->assertEquals(1500, $user->balance);
+        $this->assertSame(1500, $user->balance);
     }
 
     public function testUserDebitDecreasesBalance()
@@ -28,7 +28,7 @@ class UserTest extends TestCase
 
         $user->debit(500);
 
-        $this->assertEquals(500, $user->balance);
+        $this->assertSame(500, $user->balance);
     }
 
     public function testUserDebitThrowsBalanceExceptionWhenInsufficientFunds()
@@ -55,12 +55,12 @@ class UserTest extends TestCase
 
         $user->fill($attributes);
 
-        $this->assertEquals($attributes['id'], $user->id);
-        $this->assertEquals($attributes['name'], $user->name);
-        $this->assertEquals($attributes['email'], $user->email);
-        $this->assertEquals($attributes['password'], $user->password);
-        $this->assertEquals($attributes['document'], $user->document);
-        $this->assertEquals($attributes['balance'], $user->balance);
+        $this->assertSame($attributes['id'], $user->id);
+        $this->assertSame($attributes['name'], $user->name);
+        $this->assertSame($attributes['email'], $user->email);
+        $this->assertSame($attributes['password'], $user->password);
+        $this->assertSame($attributes['document'], $user->document);
+        $this->assertSame($attributes['balance'], $user->balance);
     }
 
     public function testUserCastsAttributes()

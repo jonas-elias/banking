@@ -28,12 +28,12 @@ class UserDTOTest extends TestCase
             'type' => 'common',
         ]);
 
-        $this->assertEquals('John Doe', $userDTO->name);
-        $this->assertEquals('12345678900', $userDTO->document);
-        $this->assertEquals('john.doe@example.com', $userDTO->email);
-        $this->assertEquals('password123', $userDTO->password);
-        $this->assertEquals(1000, $userDTO->balance);
-        $this->assertEquals('common', $userDTO->type);
+        $this->assertSame('John Doe', $userDTO->name);
+        $this->assertSame('12345678900', $userDTO->document);
+        $this->assertSame('john.doe@example.com', $userDTO->email);
+        $this->assertSame('password123', $userDTO->password);
+        $this->assertSame(1000, $userDTO->balance);
+        $this->assertSame('common', $userDTO->type);
     }
 
     public function testUserDTOHashPassword()
@@ -80,7 +80,7 @@ class UserDTOTest extends TestCase
             'type.in'           => 'The type field must be either "common" or "merchant".',
         ];
 
-        $this->assertEquals($expectedMessages, $messages);
+        $this->assertSame($expectedMessages, $messages);
     }
 
     public function testUserDTOValidationRules()
@@ -107,7 +107,7 @@ class UserDTOTest extends TestCase
             'type'     => ['required', 'in:common,merchant'],
         ];
 
-        $this->assertEquals($expectedRules, $rules);
+        $this->assertSame($expectedRules, $rules);
     }
 
     public function testUserDTOCasts()

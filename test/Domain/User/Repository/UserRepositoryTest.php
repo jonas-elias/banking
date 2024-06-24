@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HyperfTest\Domain\User\Repository;
 
+use App\Domain\User\Common;
 use App\Domain\User\DTO\UserDTO;
+use App\Domain\User\Merchant;
 use App\Domain\User\Repository\UserRepository;
 use App\Domain\User\User;
-use App\Domain\User\Common;
-use App\Domain\User\Merchant;
 use App\Domain\User\UserType;
 use Mockery;
 use Mockery\LegacyMockInterface;
@@ -40,7 +40,7 @@ class UserRepositoryTest extends TestCase
 
         $result = $repository->create($userDTO);
 
-        $this->assertEquals(['user' => 'some-ulid'], $result);
+        $this->assertSame(['user' => 'some-ulid'], $result);
     }
 
     public function testCreateUserMerchant()
@@ -65,7 +65,7 @@ class UserRepositoryTest extends TestCase
 
         $result = $repository->create($userDTO);
 
-        $this->assertEquals(['user' => 'another-ulid'], $result);
+        $this->assertSame(['user' => 'another-ulid'], $result);
     }
 
     public function testSaveUser()
@@ -99,8 +99,8 @@ class UserRepositoryTest extends TestCase
 
         $this->assertArrayHasKey('id1', $result);
         $this->assertArrayHasKey('id2', $result);
-        $this->assertEquals('John Doe', $result['id1']->name);
-        $this->assertEquals('Jane Doe', $result['id2']->name);
+        $this->assertSame('John Doe', $result['id1']->name);
+        $this->assertSame('Jane Doe', $result['id2']->name);
     }
 
     public function testCheckUserDuplication()

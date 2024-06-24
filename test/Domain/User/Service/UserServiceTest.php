@@ -42,7 +42,7 @@ class UserServiceTest extends TestCase
 
         $result = $userService->register($userDTO);
 
-        $this->assertEquals(['user' => 'some-ulid'], $result);
+        $this->assertSame(['user' => 'some-ulid'], $result);
     }
 
     public function testUserServiceRegisterUserWithDuplicateDocumentThrowsException()
@@ -103,7 +103,7 @@ class UserServiceTest extends TestCase
 
         $result = $userService->register($userDTO);
 
-        $this->assertEquals(['user' => 'another-ulid'], $result);
+        $this->assertSame(['user' => 'another-ulid'], $result);
     }
 
     protected function createUserRepositoryMock(): UserRepository|LegacyMockInterface|MockInterface

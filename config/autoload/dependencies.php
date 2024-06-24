@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Database\Dependency\DatabaseTransactionDependency;
+use App\Domain\Transaction\Dependency\TransactionDependency;
+use App\Domain\User\Dependency\UserDependency;
 use App\Request\Dependency\RequestDependecy;
 use App\Response\Dependency\ResponseDependency;
 
@@ -21,4 +23,6 @@ return [
     ...RequestDependecy::getBindings(),
     ...ResponseDependency::getBindings(),
     ...DatabaseTransactionDependency::getBindings(),
+    ...TransactionDependency::getBindings(),
+    ...UserDependency::getBindings(),
 ];

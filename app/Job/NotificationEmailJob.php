@@ -8,6 +8,7 @@ use App\Constants\HttpStatus;
 use Hyperf\AsyncQueue\Job;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\Guzzle\ClientFactory;
+use Hyperf\Retry\Retry;
 use Psr\Log\LoggerInterface;
 
 use function Hyperf\Config\config;
@@ -17,6 +18,11 @@ use function Hyperf\Config\config;
  */
 class NotificationEmailJob extends Job
 {
+    /**
+     * @var int $maxAttemps
+     */
+    protected int $maxAttemps = 3;
+
     /**
      * Method constructor.
      *
@@ -39,24 +45,34 @@ class NotificationEmailJob extends Job
      */
     public function handle()
     {
-        $uri = config('notification.email.uri');
+        Retry::whenReturns(false)
+            ->max($this->maxAttemps)
+            ->inSeconds(5)
+            ->sleep(1)
+            ->fallback(function () {
+                return true;
+            })
+            ->call(function () {
+                $uri = config('notification.email.uri');
 
-        $container = $this->app->getContainer();
+                $container = $this->app->getContainer();
 
-        $clientHttp = $container->get(ClientFactory::class);
-        $logger = $container->get(LoggerInterface::class);
+                $clientHttp = $container->get(ClientFactory::class);
+                $logger = $container->get(LoggerInterface::class);
 
-        $request = $clientHttp->create();
-        $response = $request->post($uri, [
-            'json' => [
-                'recipient' => $this->recipient,
-                'message' => $this->message,
-            ],
-            'http_errors' => false,
-        ]);
+                $request = $clientHttp->create();
+                $response = $request->post($uri, [
+                    'json' => [
+                        'recipient' => $this->recipient,
+                        'message' => $this->message,
+                    ],
+                    'http_errors' => false,
+                ]);
 
-        if ($response->getStatusCode() !== HttpStatus::NO_CONTENT) {
-            $logger->error($response->getBody()->getContents());
-        }
+                if ($response->getStatusCode() !== HttpStatus::NO_CONTENT) {
+                    $logger->error($response->getBody()->getContents());
+                    return false;
+                }
+            });
     }
 }

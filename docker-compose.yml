@@ -26,7 +26,7 @@ services:
 
   zipkin:
     image: openzipkin/zipkin
-    container_name: zipkin-transactions
+    container_name: banking-zipkin
     ports:
       - 9411:9411
 

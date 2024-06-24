@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HyperfTest\Domain\Transaction\DTO;
 
 use App\Domain\Transaction\DTO\TransactionDTO;
-use FriendsOfHyperf\ValidatedDTO\Casting\IntegerCast;
+use App\DTO\Cast\IntegerConversionCast;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -71,7 +71,7 @@ class TransactionDTOTest extends TestCase
         $castsMethod = $this->getProtectedMethod($dto, 'casts');
         $casts = $castsMethod->invoke($dto);
 
-        $this->assertInstanceOf(IntegerCast::class, $casts['value']);
+        $this->assertInstanceOf(IntegerConversionCast::class, $casts['value']);
     }
 
     public function testTransactionDTODefaults(): void

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\User\Repository;
 
 use App\Domain\User\Common;
+use App\Domain\User\Contract\UserRepositoryInterface;
 use App\Domain\User\DTO\UserDTO;
 use App\Domain\User\Merchant;
 use App\Domain\User\User;
@@ -13,7 +14,7 @@ use App\Domain\User\UserType;
 /**
  * User repository class to make transactions to database.
  */
-class UserRepository
+class UserRepository implements UserRepositoryInterface
 {
     /**
      * Method constructor.
@@ -45,7 +46,7 @@ class UserRepository
             UserType::Merchant->value => $this->merchant,
         };
 
-        $ulid = $this->generateUlid();
+        $ulid = $this->user->newUniqueId();
 
         $data = $model::create([
             'id'       => $ulid,
@@ -117,15 +118,5 @@ class UserRepository
             'document' => $documentExists,
             'email'    => $emailExists,
         ];
-    }
-
-    /**
-     * Method to generate ulid.
-     *
-     * @return string
-     */
-    protected function generateUlid(): string
-    {
-        return $this->user->newUniqueId();
     }
 }

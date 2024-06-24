@@ -4,27 +4,28 @@ declare(strict_types=1);
 
 namespace App\Domain\User\Service;
 
+use App\Domain\User\Contract\UserRepositoryInterface;
+use App\Domain\User\Contract\UserServiceInterface;
 use App\Domain\User\Document\CNPJ;
 use App\Domain\User\Document\CPF;
 use App\Domain\User\DTO\UserDTO;
 use App\Domain\User\Exception\UserExistsException;
-use App\Domain\User\Repository\UserRepository;
 use App\Domain\User\UserType;
 
 /**
  * User service class to call repository class and manage business rule.
  */
-class UserService
+class UserService implements UserServiceInterface
 {
     /**
      * Method constructor.
      *
-     * @param UserRepository $userRepository
+     * @param UserRepositoryInterface $userRepository
      *
      * @return void
      */
     public function __construct(
-        protected UserRepository $userRepository,
+        protected UserRepositoryInterface $userRepository,
     ) {
     }
 

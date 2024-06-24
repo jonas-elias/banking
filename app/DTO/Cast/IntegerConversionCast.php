@@ -13,7 +13,7 @@ class IntegerConversionCast implements Castable
      * Cast and conversion to cents.
      *
      * @param string $property
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return int
      */

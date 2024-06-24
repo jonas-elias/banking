@@ -80,7 +80,7 @@ return [
             'method' => 'request.method',
             'header' => 'request.header',
             /**
-             * I added this option :)
+             * I added this option :).
              *
              * @see https://github.com/hyperf/hyperf/commit/3037ed81582751c7c73638c4be0b3bdc6388e5fd
              */
@@ -92,7 +92,7 @@ return [
         'response' => [
             'status_code' => 'response.status_code',
             /**
-             * I added this option :)
+             * I added this option :).
              *
              * @see https://github.com/hyperf/hyperf/commit/3037ed81582751c7c73638c4be0b3bdc6388e5fd
              */

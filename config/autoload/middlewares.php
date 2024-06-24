@@ -15,6 +15,7 @@ declare(strict_types=1);
  */
 return [
     'http' => [
+        FriendsOfHyperf\Http\Logger\Middleware\HttpLogger::class,
         Hyperf\Tracer\Middleware\TraceMiddleware::class,
         Hyperf\Metric\Middleware\MetricMiddleware::class,
     ],

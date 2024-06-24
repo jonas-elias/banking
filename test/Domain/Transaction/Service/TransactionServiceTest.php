@@ -8,6 +8,8 @@ use App\Database\DatabaseTransaction;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
+use App\Domain\Transaction\Notification\Notification;
+use App\Domain\Transaction\Notification\NotificationType;
 use App\Domain\Transaction\Repository\TransactionRepository;
 use App\Domain\Transaction\Service\TransactionService;
 use App\Domain\User\Repository\UserRepository;
@@ -37,6 +39,7 @@ class TransactionServiceTest extends TestCase
         $userRepository = $this->createUserRepositoryMock();
         $transRepository = $this->createTransactionRepositoryMock();
         $transactionDTO = $this->createTransactionDTOMock();
+        $notification = $this->createNotificationMock();
         $user = $this->createUserMock();
 
         $transactionDTO->payer = 'payer_id';
@@ -55,8 +58,10 @@ class TransactionServiceTest extends TestCase
         $transRepository->shouldReceive('create')->andReturn([
             'transaction' => 'transaction-id',
         ]);
+        $user->shouldReceive('getAttribute')->with('email')->andReturn('test@gmail.com');
+        $notification->shouldReceive('send')->with(NotificationType::EMAIL, 'test@gmail.com', 'Transaction received.')->once()->andReturn(true);
 
-        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository);
+        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository, $notification);
 
         $service->transfer($transactionDTO);
         $this->assertTrue(true);
@@ -68,6 +73,7 @@ class TransactionServiceTest extends TestCase
         $userRepository = $this->createUserRepositoryMock();
         $transRepository = $this->createTransactionRepositoryMock();
         $transactionDTO = $this->createTransactionDTOMock();
+        $notification = $this->createNotificationMock();
         $user = $this->createUserMock();
 
         $transactionDTO->payer = 'payer_id';
@@ -87,7 +93,7 @@ class TransactionServiceTest extends TestCase
             'transaction' => 'transaction-id',
         ]);
 
-        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository);
+        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository, $notification);
 
         $this->expectException(PayerException::class);
         $service->transfer($transactionDTO);
@@ -99,6 +105,7 @@ class TransactionServiceTest extends TestCase
         $userRepository = $this->createUserRepositoryMock();
         $transRepository = $this->createTransactionRepositoryMock();
         $transactionDTO = $this->createTransactionDTOMock();
+        $notification = $this->createNotificationMock();
         $user = $this->createUserMock();
 
         $transactionDTO->payer = 'payer_id';
@@ -118,7 +125,7 @@ class TransactionServiceTest extends TestCase
             'transaction' => 'transaction-id',
         ]);
 
-        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository);
+        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository, $notification);
 
         $this->expectException(PayeeException::class);
         $service->transfer($transactionDTO);
@@ -130,6 +137,7 @@ class TransactionServiceTest extends TestCase
         $userRepository = $this->createUserRepositoryMock();
         $transRepository = $this->createTransactionRepositoryMock();
         $transactionDTO = $this->createTransactionDTOMock();
+        $notification = $this->createNotificationMock();
         $user = $this->createUserMock();
 
         $transactionDTO->payer = 'payer_id';
@@ -149,7 +157,7 @@ class TransactionServiceTest extends TestCase
             throw new Exception();
         });
 
-        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository);
+        $service = new TransactionService($databaseTransaction, $transRepository, $userRepository, $notification);
 
         $this->expectException(Exception::class);
         $service->transfer($transactionDTO);
@@ -173,6 +181,11 @@ class TransactionServiceTest extends TestCase
     protected function createTransactionDTOMock(): TransactionDTO|LegacyMockInterface|MockInterface
     {
         return Mockery::mock(TransactionDTO::class);
+    }
+
+    protected function createNotificationMock(): Notification|LegacyMockInterface|MockInterface
+    {
+        return Mockery::mock(Notification::class);
     }
 
     protected function createUserMock(): User|LegacyMockInterface|MockInterface

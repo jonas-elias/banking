@@ -8,6 +8,8 @@ use App\Database\DatabaseTransaction;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\PayeeException;
 use App\Domain\Transaction\Exception\PayerException;
+use App\Domain\Transaction\Notification\Notification;
+use App\Domain\Transaction\Notification\NotificationType;
 use App\Domain\Transaction\Repository\TransactionRepository;
 use App\Domain\User\Repository\UserRepository;
 
@@ -29,6 +31,7 @@ class TransactionService
         protected DatabaseTransaction $databaseTransaction,
         protected TransactionRepository $transRepository,
         protected UserRepository $userRepository,
+        protected Notification $notification,
     ) {
     }
 
@@ -53,6 +56,8 @@ class TransactionService
             $this->userRepository->save($payer);
             $this->userRepository->save($payee);
             $this->transRepository->create($transactionDTO);
+
+            $this->notification->send(NotificationType::EMAIL, $payee->email, 'Transaction received.');
         });
     }
 }

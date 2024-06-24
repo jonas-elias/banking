@@ -21,10 +21,10 @@ use function Hyperf\Support\env;
 return [
     'default' => env('TRACER_DRIVER', 'zipkin'),
     'enable'  => [
-        'guzzle' => env('TRACER_ENABLE_GUZZLE', false),
-        'redis'  => env('TRACER_ENABLE_REDIS', false),
-        'db'     => env('TRACER_ENABLE_DB', false),
-        'method' => env('TRACER_ENABLE_METHOD', false),
+        'guzzle' => env('TRACER_ENABLE_GUZZLE', true),
+        'redis'  => env('TRACER_ENABLE_REDIS', true),
+        'db'     => env('TRACER_ENABLE_DB', true),
+        'method' => env('TRACER_ENABLE_METHOD', true),
     ],
     'tracer' => [
         'zipkin' => [
@@ -37,7 +37,7 @@ return [
                 'port' => 9501,
             ],
             'options' => [
-                'endpoint_url' => env('ZIPKIN_ENDPOINT_URL', 'http://localhost:9411/api/v2/spans'),
+                'endpoint_url' => env('ZIPKIN_ENDPOINT_URL', 'http://zipkin-transactions:9411/api/v2/spans'),
                 'timeout'      => env('ZIPKIN_TIMEOUT', 1),
             ],
             'sampler' => BinarySampler::createAsAlwaysSample(),
@@ -53,4 +53,50 @@ return [
             ],
         ],
     ],
+    'tags' => [
+        'http_client' => [
+            'http.url' => 'http.url',
+            'http.method' => 'http.method',
+            'http.status_code' => 'http.status_code',
+        ],
+        'redis' => [
+            'arguments' => 'arguments',
+            'result' => 'result',
+        ],
+        'db' => [
+            'db.query' => 'db.query',
+            'db.statement' => 'db.statement',
+            'db.query_time' => 'db.query_time',
+        ],
+        'exception' => [
+            'class' => 'exception.class',
+            'code' => 'exception.code',
+            'message' => 'exception.message',
+            'stack_trace' => 'exception.stack_trace',
+        ],
+        'request' => [
+            'path' => 'request.path',
+            'uri' => 'request.uri',
+            'method' => 'request.method',
+            'header' => 'request.header',
+            /**
+             * I added this option :).
+             *
+             * @see https://github.com/hyperf/hyperf/commit/3037ed81582751c7c73638c4be0b3bdc6388e5fd
+             */
+            'body' => 'request.body',
+        ],
+        'coroutine' => [
+            'id' => 'coroutine.id',
+        ],
+        'response' => [
+            'status_code' => 'response.status_code',
+            /**
+             * I added this option :).
+             *
+             * @see https://github.com/hyperf/hyperf/commit/3037ed81582751c7c73638c4be0b3bdc6388e5fd
+             */
+            'body' => 'response.body',
+        ],
+    ]
 ];

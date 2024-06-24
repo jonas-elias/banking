@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81465011980fbf3ec828dede8f814c01",
+    "content-hash": "0cacbb9406aedef429f385bbf6ba46ec",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -3458,6 +3458,73 @@
                 "php",
                 "pool",
                 "redis"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-06-17T01:51:06+00:00"
+        },
+        {
+            "name": "hyperf/retry",
+            "version": "v3.1.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/retry.git",
+                "reference": "6f62216927f260df4d00800c3b2fbadcc9556681"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/retry/zipball/6f62216927f260df4d00800c3b2fbadcc9556681",
+                "reference": "6f62216927f260df4d00800c3b2fbadcc9556681",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/support": "~3.1.0",
+                "hyperf/utils": "~3.1.0",
+                "php": ">=8.1",
+                "psr/container": "^1.0 || ^2.0"
+            },
+            "suggest": {
+                "hyperf/contract": "Required to use annotations.",
+                "hyperf/di": "Required to use annotations."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\Retry\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Retry\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A retry component for hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "php",
+                "retry"
             ],
             "support": {
                 "docs": "https://hyperf.wiki",

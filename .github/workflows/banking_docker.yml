@@ -28,9 +28,7 @@ jobs:
 
       - name: Run migrations
         run: |
-          docker exec -it banking /bin/bash
-          php bin/hyperf.php migrate:fresh
-          exit
+          docker exec banking php bin/hyperf.php migrate:fresh
 
       - name: Debug Docker logs
         run: docker compose logs

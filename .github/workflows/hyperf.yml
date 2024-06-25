@@ -1,4 +1,4 @@
-name: CI Banking Application
+name: CI Banking Application PHP 8.3
 
 on:
   push:

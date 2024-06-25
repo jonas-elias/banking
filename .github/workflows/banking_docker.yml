@@ -1,4 +1,4 @@
-name: CI Integration Tests
+name: CI with Docker
 
 on:
   push:
@@ -20,15 +20,19 @@ jobs:
         uses: mbround18/install-jq@v1
 
       - name: Run Docker container
-        run: docker compose up -d
+        run: |
+          docker-compose up -d
+          docker ps -a
+          sleep 10
 
-      - name: Wait up hyperf application
-        run: sleep 30
+      - name: Debug Docker logs
+        run: docker-compose logs
 
       - name: Run Integration Tests
         run: |
           BASE_URL="http://localhost:9501/api"
 
+          echo "Testing merchant user creation..."
           merchant_id=$(curl -X POST "$BASE_URL/user" \
             -H "Content-Type: application/json" \
             -d '{"name": "merchant","email": "merchant@gmail.com","password": "12345678","balance": 100,"type": "merchant","document": "10101010101010"}' \
@@ -41,9 +45,10 @@ jobs:
 
           echo "Merchant ID: $merchant_id"
 
+          echo "Testing customer user creation..."
           common_id=$(curl -X POST "$BASE_URL/user" \
             -H "Content-Type: application/json" \
-            -d '{"name": "customer","email": "customer@gmail.com","password": "12345678","balance": 100,"type": "common","document": "10101010101"}' \
+            -d '{"name": "common","email": "common@gmail.com","password": "12345678","balance": 100,"type": "common","document": "10101010101"}' \
             -s | jq -r '.user')
 
           if [ -z "$common_id" ]; then
@@ -53,13 +58,14 @@ jobs:
 
           echo "Common ID: $common_id"
 
+          echo "Testing transaction creation..."
           response_code=$(curl -X POST "$BASE_URL/transfer" \
             -H "Content-Type: application/json" \
             -d '{"payer": "'$common_id'", "payee": "'$merchant_id'", "value": 10}' \
             -o /dev/null -s -w "%{http_code}")
 
           if [ "$response_code" -ne 204 ]; then
-            echo "Failed to create transaction"
+            echo "Failed to create transaction (HTTP code $response_code)"
             exit 1
           fi
 

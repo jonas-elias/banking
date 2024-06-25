@@ -20,9 +20,9 @@ class IntegerConversionCastTest extends TestCase
 
     public function testIntegerConversionCastWithInteger()
     {
-        $value = 123;
+        $value = 123; // real
         $result = $this->caster->cast('testProperty', $value);
-        $this->assertSame(123, $result);
+        $this->assertSame(12300, $result); // cents
     }
 
     public function testIntegerConversionCastWithFloat()

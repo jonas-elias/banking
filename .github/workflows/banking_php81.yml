@@ -28,7 +28,7 @@ jobs:
           sudo mv composer.phar /usr/local/bin/composer
 
       - name: Install Dependencies
-        run: composer install
+        run: composer update
 
       - name: Run Tests
         run: composer test

@@ -21,9 +21,16 @@ jobs:
 
       - name: Run Docker container
         run: |
+          cp .env-example .env
           docker compose up -d
           docker ps -a
           sleep 10
+
+      - name: Run migrations
+        run: |
+          docker exec -it banking /bin/bash
+          php bin/hyperf.php migrate:fresh
+          exit
 
       - name: Debug Docker logs
         run: docker compose logs

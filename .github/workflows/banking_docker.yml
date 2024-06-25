@@ -21,12 +21,12 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker-compose up -d
+          docker compose up -d
           docker ps -a
           sleep 10
 
       - name: Debug Docker logs
-        run: docker-compose logs
+        run: docker compose logs
 
       - name: Run Integration Tests
         run: |

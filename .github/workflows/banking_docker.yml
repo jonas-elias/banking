@@ -23,4 +23,4 @@ jobs:
         run: sleep 15
 
       - name: Run Integration Tests
-        run: ./integration_test.sh
+        run: /bin/bash ./test/integration_test.sh

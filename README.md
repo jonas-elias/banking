@@ -58,11 +58,11 @@ docker-compose logs
 **Register common user:**
 
 ```shell
-curl --location 'http://localhost:9501/api/user/register' \
+curl --location 'http://localhost:9501/api/user' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "jonas",
-    "email": "jonasdasilvaelias@gmail.com",
+    "name": "common",
+    "email": "common@gmail.com",
     "password": "password",
     "balance": 10000,
     "type": "common",
@@ -73,11 +73,11 @@ curl --location 'http://localhost:9501/api/user/register' \
 **Register merchant user:**
 
 ```shell
-curl --location 'http://localhost:9501/api/user/register' \
+curl --location 'http://localhost:9501/api/user' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "jonas",
-    "email": "jonasdasilvaeliasmerchant@gmail.com",
+    "name": "merchant",
+    "email": "merchant@gmail.com",
     "password": "password",
     "balance": 10000,
     "type": "merchant",
@@ -90,7 +90,7 @@ curl --location 'http://localhost:9501/api/user/register' \
 ```shell
 curl --location 'http://localhost:9501/api/transfer' \
 --header 'Content-Type: application/json' \
---data '{
+--data-raw '{
     "payer": "payer_id",
     "payee": "payee_id",
     "value": 10

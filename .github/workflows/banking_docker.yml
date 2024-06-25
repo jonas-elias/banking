@@ -40,13 +40,6 @@ jobs:
           -s | jq -r '.id')
           echo "CUSTOMER_ID=$customer_id" >> $GITHUB_ENV
 
-      - name: Create user merchant
-        run: |
-          curl -X POST http://localhost:9501/api/user \
-          -H "Content-Type: application/json" \
-          -d '{"name": "merchant","email": "merchant@gmail.com","password": "12345678","balance": 100,"type": "merchant","document": "10101010101010"}' \
-          -o /dev/null -s -w "%{http_code}" | grep -q 201 || exit 1
-
       - name: Create transaction
         run: |
           curl -X POST http://localhost:9501/api/transfer \

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\User\Controller;
 
+use App\Constants\HttpStatus;
 use App\Domain\User\Contract\UserServiceInterface;
 use App\Domain\User\Document\Exception\DocumentException;
 use App\Domain\User\DTO\UserDTO;
@@ -49,19 +50,19 @@ class UserController
 
             return $response
                 ->json($data)
-                ->withStatus(201);
+                ->withStatus(HttpStatus::CREATED);
         } catch (ValidationException $th) {
             return $response->json($th->errors())
-                ->withStatus(422);
+                ->withStatus(HttpStatus::UNPROCESSABLE_ENTITY);
         } catch (DocumentException $de) {
             return $response->json(['errors' => $de->getMessage()])
-                ->withStatus(422);
+                ->withStatus(HttpStatus::UNPROCESSABLE_ENTITY);
         } catch (UserExistsException $ue) {
             return $response->json(['errors' => 'Duplicated user.'])
-                ->withStatus(409);
+                ->withStatus(HttpStatus::CONFLICT);
         } catch (Throwable $th) {
             return $response->json(['errors' => 'Internal error.'])
-                ->withStatus(500);
+                ->withStatus(HttpStatus::INTERNAL_SERVER_ERROR);
         }
     }
 }

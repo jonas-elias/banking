@@ -17,5 +17,5 @@ use App\Domain\Transaction\Controller\TransactionController;
 use App\Domain\User\Controller\UserController;
 use Hyperf\HttpServer\Router\Router;
 
-Router::post('/api/user/register', [UserController::class, 'register']);
+Router::post('/api/user', [UserController::class, 'register']);
 Router::post('/api/transfer', [TransactionController::class, 'transfer']);

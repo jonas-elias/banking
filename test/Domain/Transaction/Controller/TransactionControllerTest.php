@@ -42,8 +42,7 @@ class TransactionControllerTest extends TestCase
         $transactionDTO->shouldReceive('fromRequest')->with($request)->andReturnSelf();
         $transactionService->shouldReceive('transfer')->with($transactionDTO)->andReturn(['success' => true]);
 
-        $response->shouldReceive('json')->with(null)->andReturnSelf();
-        $response->shouldReceive('withStatus')->with(200)->andReturnSelf();
+        $response->shouldReceive('withStatus')->with(204)->andReturnSelf();
 
         $controller = new TransactionController($transactionService);
         $result = $controller->transfer($request, $response, $transactionDTO);
@@ -159,7 +158,7 @@ class TransactionControllerTest extends TestCase
         $transactionDTO->shouldReceive('fromRequest')->with($request)->andReturnSelf();
         $transactionService->shouldReceive('transfer')->with($transactionDTO)->andThrow(new Exception('General error'));
 
-        $response->shouldReceive('json')->with(['errors' => 'General error'])->andReturnSelf();
+        $response->shouldReceive('json')->with(['errors' => 'Internal error.'])->andReturnSelf();
         $response->shouldReceive('withStatus')->with(500)->andReturnSelf();
 
         $controller = new TransactionController($transactionService);

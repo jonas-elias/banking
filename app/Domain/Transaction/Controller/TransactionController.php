@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Transaction\Controller;
 
+use App\Constants\HttpStatus;
 use App\Domain\Transaction\Contract\TransactionServiceInterface;
 use App\Domain\Transaction\DTO\TransactionDTO;
 use App\Domain\Transaction\Exception\AuthorizationException;
@@ -42,31 +43,30 @@ class TransactionController
      *
      * @return Psr7ResponseInterface
      */
-    public function transfer(RequestInterface $request, ResponseInterface $response, TransactionDTO $transactionDTO): Psr7ResponseInterface
+    public function transfer(RequestInterface $request, ResponseInterface|Psr7ResponseInterface $response, TransactionDTO $transactionDTO): Psr7ResponseInterface
     {
         try {
             $dto = $transactionDTO::fromRequest($request);
 
-            $data = $this->transactionService->transfer($dto);
+            $this->transactionService->transfer($dto);
 
             return $response
-                ->json($data)
-                ->withStatus(200);
+                ->withStatus(HttpStatus::NO_CONTENT);
         } catch (ValidationException $th) {
             return $response->json($th->errors())
-                ->withStatus(422);
+                ->withStatus(HttpStatus::UNPROCESSABLE_ENTITY);
         } catch (PayerException | PayeeException $pe) {
             return $response->json(['errors' => 'User(s) invalid identification.'])
-                ->withStatus(422);
+                ->withStatus(HttpStatus::UNPROCESSABLE_ENTITY);
         } catch (UserDebitException $ue) {
             return $response->json(['errors' => 'Insufficient balance.'])
-                ->withStatus(422);
+                ->withStatus(HttpStatus::UNPROCESSABLE_ENTITY);
         } catch (AuthorizationException $ae) {
             return $response->json(['errors' => 'Authorization denied.'])
-                ->withStatus(403);
+                ->withStatus(HttpStatus::FORBIDDEN);
         } catch (Throwable $th) {
-            return $response->json(['errors' => $th->getMessage()])
-                ->withStatus(500);
+            return $response->json(['errors' => 'Internal error.'])
+                ->withStatus(HttpStatus::INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -15,6 +15,8 @@ This combination of technologies not only ensures optimized performance and secu
   <img src="https://github.com/jonas-elias/banking/assets/48037643/df9beaab-d9e5-4739-8aad-c48ac0aebf89" alt="arch_banking drawio-3">
 </p>
 
+## [Documentation 📚](https://github.com/jonas-elias/banking/issues/72)
+
 ## Installation 🚀
 
 ### Prerequisites

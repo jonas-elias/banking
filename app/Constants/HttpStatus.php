@@ -51,6 +51,16 @@ class HttpStatus extends AbstractConstants
     public const NOT_FOUND = 404;
 
     /**
+     * @Message("Conflict")
+     */
+    public const CONFLICT = 409;
+
+    /**
+     * @Message("Unprocessable Entity")
+     */
+    public const UNPROCESSABLE_ENTITY = 422;
+
+    /**
      * @Message("Internal Server Error")
      */
     public const INTERNAL_SERVER_ERROR = 500;

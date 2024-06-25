@@ -74,7 +74,7 @@ class UserDTOTest extends TestCase
             'password.string'   => 'The password field must be a string.',
             'password.min'      => 'The password field must be at least 8 characters.',
             'balance.required'  => 'The balance field is required.',
-            'balance.integer'   => 'The balance field must be an integer value.',
+            'balance.numeric'   => 'The balance field must be an numeric value.',
             'balance.min'       => 'The balance field must be at least 0.',
             'type.required'     => 'The type field is required.',
             'type.in'           => 'The type field must be either "common" or "merchant".',
@@ -103,7 +103,7 @@ class UserDTOTest extends TestCase
             'document' => ['required', 'string'],
             'email'    => ['required', 'email'],
             'password' => ['required', 'string', 'min:8'],
-            'balance'  => ['required', 'integer', 'min:0'],
+            'balance'  => ['required', 'numeric', 'min:0'],
             'type'     => ['required', 'in:common,merchant'],
         ];
 

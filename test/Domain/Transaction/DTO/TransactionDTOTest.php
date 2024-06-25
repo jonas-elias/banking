@@ -35,7 +35,7 @@ class TransactionDTOTest extends TestCase
         $this->assertSame([
             'payer' => ['required', 'string'],
             'payee' => ['required', 'string'],
-            'value' => ['required', 'integer', 'min:1'],
+            'value' => ['required', 'numeric', 'min:0.1'],
         ], $rules);
     }
 
@@ -55,7 +55,7 @@ class TransactionDTOTest extends TestCase
             'payee.required' => 'The payee field is required.',
             'payee.string' => 'The payee field must be a string.',
             'value.required' => 'The value field is required.',
-            'value.integer' => 'The value field must be an integer.',
+            'value.numeric' => 'The value field must be an numeric.',
             'value.min' => 'The value field must be at least 1 cent.',
         ], $messages);
     }

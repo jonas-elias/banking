@@ -24,7 +24,7 @@ class UserDTOTest extends TestCase
             'document' => '12345678900',
             'email' => 'john.doe@example.com',
             'password' => 'password123',
-            'balance' => 1000,
+            'balance' => 1000, // real
             'type' => 'common',
         ]);
 
@@ -32,7 +32,7 @@ class UserDTOTest extends TestCase
         $this->assertSame('12345678900', $userDTO->document);
         $this->assertSame('john.doe@example.com', $userDTO->email);
         $this->assertSame('password123', $userDTO->password);
-        $this->assertSame(1000, $userDTO->balance);
+        $this->assertSame(100000, $userDTO->balance); // cents
         $this->assertSame('common', $userDTO->type);
     }
 

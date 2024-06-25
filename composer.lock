@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cacbb9406aedef429f385bbf6ba46ec",
+    "content-hash": "edd4818f46809415fb619e23308e380d",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -3057,6 +3057,70 @@
             "support": {
                 "issues": "https://github.com/hyperf/metric/issues",
                 "source": "https://github.com/hyperf/metric/tree/v3.1.27"
+            },
+            "funding": [
+                {
+                    "url": "https://hyperf.wiki/#/zh-cn/donate",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/hyperf",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-06-17T01:51:06+00:00"
+        },
+        {
+            "name": "hyperf/migration-generator",
+            "version": "v3.1.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/migration-generator.git",
+                "reference": "308a0097f5b8a24f58315ff58ac6ae0af88fa8a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/migration-generator/zipball/308a0097f5b8a24f58315ff58ac6ae0af88fa8a1",
+                "reference": "308a0097f5b8a24f58315ff58ac6ae0af88fa8a1",
+                "shasum": ""
+            },
+            "require": {
+                "hyperf/command": "~3.1.0",
+                "hyperf/database": "~3.1.0",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\MigrationGenerator\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\MigrationGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Migration generator for Hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "migration",
+                "migration-generator",
+                "php",
+                "swoole"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
             },
             "funding": [
                 {

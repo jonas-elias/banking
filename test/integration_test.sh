@@ -29,15 +29,13 @@ response_code=$(curl -X POST "$BASE_URL/transfer" \
   -d '{"payer": "'$common_id'", "payee": "'$merchant_id'", "value": 10}' \
   -o /dev/null -s -w "%{http_code}")
 
-if [ "$response_code" -ne 204 ]; && [ "$response_code" -ne 403 ]; then
-  echo "Failed to create transaction"
-  exit 1
-fi
+case "$response_code" in 
 
-if [ "$response_code" -ne 403 ]; then
-  echo "Transaction denied by webhook"
-fi
+    204) echo "Transaction success" ;; 
+       
+    403) echo "Transaction denied by webhook" ;; 
 
-if [ "$response_code" -ne 204 ]; then
-  echo "Transaction success"
-fi
+    *)
+      echo "Failed to create transaction"
+      exit 1 ;; 
+esac

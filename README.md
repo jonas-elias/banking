@@ -38,12 +38,12 @@ docker compose up -d
 
 **Access the Docker container:**
 ```sh
-docker exec -it banking /bin/bash
+docker exec banking php bin/hyperf.php migrate:fresh --force
 ```
-
-**Run database migrations:**
-```sh
-php bin/hyperf.php migrate:fresh
+Or using tty: true
+```
+docker exec -it banking /bin/bash
+php bin/hyperf.php migrate:fresh --force
 ```
 
 ### Additional Notes

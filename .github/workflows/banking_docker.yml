@@ -1,4 +1,4 @@
-name: CI with Docker
+name: CI Integration Tests
 
 on:
   push:
@@ -29,9 +29,6 @@ jobs:
       - name: Run migrations
         run: |
           docker exec banking php bin/hyperf.php migrate:fresh
-
-      - name: Debug Docker logs
-        run: docker compose logs
 
       - name: Run Integration Tests
         run: /bin/bash ./test/integration_test.sh

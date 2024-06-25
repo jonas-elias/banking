@@ -15,7 +15,6 @@ services:
     depends_on:
       - valkey
     environment:
-      - APP_ENV=dev
       - SCAN_CACHEABLE=false
 
   valkey:

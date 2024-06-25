@@ -1,0 +1,34 @@
+name: CI Integration Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install JQ Tool
+        uses: mbround18/install-jq@v1
+
+      - name: Run Docker container
+        run: |
+          cp .env.example .env
+          docker compose up -d
+          docker ps -a
+          sleep 10
+
+      - name: Run migrations
+        run: |
+          docker exec banking php bin/hyperf.php migrate:fresh --force
+
+      - name: Run Integration Tests
+        run: /bin/bash ./test/integration_test.sh

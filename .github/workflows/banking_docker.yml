@@ -20,7 +20,7 @@ jobs:
         run: docker compose up -d
 
       - name: Wait up hyperf application
-        run: sleep 15
+        run: sleep 30
 
       - name: Run Integration Tests
         run: /bin/bash ./test/integration_test.sh

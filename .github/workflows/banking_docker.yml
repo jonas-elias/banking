@@ -28,7 +28,7 @@ jobs:
 
       - name: Run migrations
         run: |
-          yes | docker exec banking php bin/hyperf.php migrate:fresh
+          docker exec banking php bin/hyperf.php migrate:fresh --force
 
       - name: Run Integration Tests
         run: /bin/bash ./test/integration_test.sh

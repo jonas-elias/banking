@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install JQ Tool
+        uses: mbround18/install-jq@v1
+
       - name: Run Docker container
         run: docker compose up -d
 

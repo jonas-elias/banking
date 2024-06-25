@@ -7,6 +7,7 @@ namespace HyperfTest\DTO;
 use App\DTO\Cast\IntegerConversionCast;
 use FriendsOfHyperf\ValidatedDTO\Exception\CastException;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class IntegerConversionCastTest extends TestCase
 {
@@ -66,6 +67,6 @@ class IntegerConversionCastTest extends TestCase
     public function testCastWithObject()
     {
         $this->expectException(CastException::class);
-        $this->caster->cast('testProperty', new \stdClass());
+        $this->caster->cast('testProperty', new stdClass());
     }
 }

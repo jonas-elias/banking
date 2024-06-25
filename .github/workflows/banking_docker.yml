@@ -28,8 +28,8 @@ jobs:
           merchant_id=$(curl -X POST http://localhost:9501/api/user \
           -H "Content-Type: application/json" \
           -d '{"name": "merchant","email": "merchant@gmail.com","password": "12345678","balance": 100,"type": "merchant","document": "10101010101010"}' \
-          -s | jq -r '.id')
-          echo "MERCHANT_ID=$merchant_id" >> $GITHUB_ENV
+          -s | jq -r '.user')
+          echo "CUSTOMER_ID=$customer_id" >> $GITHUB_ENV
 
       - name: Create User Customer
         id: create_user_customer
@@ -37,7 +37,7 @@ jobs:
           customer_id=$(curl -X POST http://localhost:9501/api/user \
           -H "Content-Type: application/json" \
           -d '{"name": "customer","email": "customer@gmail.com","password": "12345678","balance": 100,"type": "customer","document": "20202020202020"}' \
-          -s | jq -r '.id')
+          -s | jq -r '.user')
           echo "CUSTOMER_ID=$customer_id" >> $GITHUB_ENV
 
       - name: Create transaction

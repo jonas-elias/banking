@@ -1,0 +1,55 @@
+name: CI with Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Docker container
+        run: docker compose up -d
+
+      - name: Wait up hyperf application
+        run: sleep 15
+
+      - name: Create User Merchant
+        id: create_user_merchant
+        run: |
+          merchant_id=$(curl -X POST http://localhost:9501/api/user \
+          -H "Content-Type: application/json" \
+          -d '{"name": "merchant","email": "merchant@gmail.com","password": "12345678","balance": 100,"type": "merchant","document": "10101010101010"}' \
+          -s | jq -r '.id')
+          echo "MERCHANT_ID=$merchant_id" >> $GITHUB_ENV
+
+      - name: Create User Customer
+        id: create_user_customer
+        run: |
+          customer_id=$(curl -X POST http://localhost:9501/api/user \
+          -H "Content-Type: application/json" \
+          -d '{"name": "customer","email": "customer@gmail.com","password": "12345678","balance": 100,"type": "customer","document": "20202020202020"}' \
+          -s | jq -r '.id')
+          echo "CUSTOMER_ID=$customer_id" >> $GITHUB_ENV
+
+      - name: Create user merchant
+        run: |
+          curl -X POST http://localhost:9501/api/user \
+          -H "Content-Type: application/json" \
+          -d '{"name": "merchant","email": "merchant@gmail.com","password": "12345678","balance": 100,"type": "merchant","document": "10101010101010"}' \
+          -o /dev/null -s -w "%{http_code}" | grep -q 201 || exit 1
+
+      - name: Create transaction
+        run: |
+          curl -X POST http://localhost:9501/api/transfer \
+          -H "Content-Type: application/json" \
+          -d '{"payer_id": "'$CUSTOMER_ID'", "payee_id": "'$MERCHANT_ID'", "value": 10}' \
+          -o /dev/null -s -w "%{http_code}" | grep -q 204 || exit 1

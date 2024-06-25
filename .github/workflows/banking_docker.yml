@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Docker container
         run: |
-          cp .env-example .env
+          cp .env.example .env
           docker compose up -d
           docker ps -a
           sleep 10

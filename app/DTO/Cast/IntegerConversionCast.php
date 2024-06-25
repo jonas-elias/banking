@@ -23,6 +23,6 @@ class IntegerConversionCast implements Castable
             throw new CastException($property);
         }
 
-        return is_int($value) ? $value : (int) ($value * 100);
+        return (int) ($value * 100);
     }
 }

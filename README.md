@@ -33,7 +33,7 @@ cp .env.example .env
 **Start the Docker container:**
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 **Access the Docker container:**
@@ -50,7 +50,7 @@ php bin/hyperf.php migrate:fresh
 
 **If you encounter any issues, check the Docker logs for more information:**
 ```sh
-docker-compose logs
+docker compose logs
 ```
 
 ## Use ✅
@@ -98,6 +98,4 @@ curl --location 'http://localhost:9501/api/transfer' \
 ```
 
 ## Questions 🤔
-If you have any questions about how to install, use, or manage the project, please contact us at jonasdasilvaelias@gmail.com
-
-Best regards!
+If you have any questions about how to install, use, or manage the project, please contact us at jonasdasilvaelias@gmail.com and open issue https://github.com/jonas-elias/banking/issues
